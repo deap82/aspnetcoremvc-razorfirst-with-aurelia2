@@ -2,7 +2,9 @@
 const dumber = require('gulp-dumber');
 const merge2 = require('merge2');
 const au2 = require('@aurelia/plugin-gulp').default;
+const del = require('del');
 const typescript = require('gulp-typescript');
+const replace = require('gulp-replace');
 
 const dr = dumber({
     src: 'app',
@@ -16,12 +18,21 @@ const dr = dumber({
 
 var isCI = false;
 
+function ScriptBundlePrepair(cb) {
+    del(['app/common']).then(function () {
+        gulp.src(['./../FooBarFrontend/common/**/*.ts', './../FooBarFrontend/common/**/*.html']).pipe(gulp.dest('app/common')).on('end', cb);
+    })
+}
+
 function ScriptBundle() {
     var buildJs = () => {
-        const ts = typescript.createProject('tsconfig.json', { noEmitOnError: true });
-        return gulp.src('app/**/*.ts', { sourcemaps: !isCI })
+        const ts = typescript.createProject('tsconfig.json', { noEmitOnError: true, paths: { "SHARED/*": ["common/*"] } });
+
+        var globs = ['app/**/*.ts'];
+        return gulp.src(globs, { sourcemaps: !isCI })
             .pipe(au2())
-            .pipe(ts());
+            .pipe(ts())
+            .pipe(replace("from 'SHARED/", "from 'common/"));
     }
 
     var buildHtml = () => {
@@ -34,4 +45,5 @@ function ScriptBundle() {
         .pipe(gulp.dest('wwwroot/dist', { sourcemaps: isCI ? false : '.' }));
 }
 
+exports.scriptBundlePrepair = ScriptBundlePrepair;
 exports.scriptBundle = ScriptBundle;

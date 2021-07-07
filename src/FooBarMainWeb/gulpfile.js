@@ -10,7 +10,7 @@ var sassBundle = require('./gulp/tasks/sass-bundle');
 exports['sass-bundle'] = sassBundle.sassBundle;
 
 var scriptBundle = require('./gulp/tasks/script-bundle');
-exports['script-bundle'] = scriptBundle.scriptBundle;
+exports['script-bundle'] = (cb) => gulp.series(scriptBundle.scriptBundlePrepair, scriptBundle.scriptBundle)(cb);
 
 var watcher = require('./gulp/tasks/watcher');
 exports['watcher'] = watcher.watcher;

@@ -11,7 +11,7 @@ export class MvcRoute {
     load(params: any, current: RouteNode, arg3: RouteNode) {
         let url = this.resolveMvcUrl(params, current);
         this.loadHtml(url).then(html => {
-            this.html = html;
+            this.html = html; 
         });
     }
 

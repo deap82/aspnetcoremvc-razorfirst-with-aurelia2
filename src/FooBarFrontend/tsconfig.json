@@ -17,6 +17,8 @@
     "target": "ES2017",
     "module": "esnext",
     "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": { "SHARED/*": [ "common/*" ] },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "types": [
@@ -24,9 +26,5 @@
       "jquery-validation-unobtrusive",
       "jquery.validation"
     ]
-  },
-  "include": [ "app" ],
-  "files": [
-    "app/resource.d.ts"
-  ]
+  }
 }

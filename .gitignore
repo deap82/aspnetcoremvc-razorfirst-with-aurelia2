@@ -351,3 +351,4 @@ MigrationBackup/
 
 # Project specific
 src/*Web/wwwroot/dist/
+src/*Web/app/common/
