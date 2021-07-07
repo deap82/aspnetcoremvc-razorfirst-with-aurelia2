@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "name": "foobar-npm-root",
+  "private": true,
+  "devDependencies": {
+    "@aurelia/plugin-gulp": "latest",
+    "@types/jquery": "3.3.31",
+    "@types/jquery-validation-unobtrusive": "3.2.32",
+    "@types/jquery.validation": "^1.16.6",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-dumber": "^1.0.3",
+    "gulp-sass": "^4.1.0",
+    "gulp-typescript": "^5.0.1",
+    "merge2": "^1.4.1",
+    "node-sass": "^6.0.0",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "aurelia": "latest"
+  }
+}

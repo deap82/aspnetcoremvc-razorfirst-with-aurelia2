@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+	<OutputType>Exe</OutputType>
+	<TargetFramework>netcoreapp3.1</TargetFramework>
+	<PreserveCompilationContext>true</PreserveCompilationContext>
+	<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+	<RootNamespace>FooBarAdminWeb</RootNamespace>
+	<AssemblyName>FooBarAdminWeb</AssemblyName>
+	<RetryAttemptsForDeployment>20</RetryAttemptsForDeployment>
+	<TrimUnusedDependencies>true</TrimUnusedDependencies>
+	<GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>
+	<IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FooBarFrontend\FooBarFrontend.csproj" />
+  </ItemGroup>
+</Project>
