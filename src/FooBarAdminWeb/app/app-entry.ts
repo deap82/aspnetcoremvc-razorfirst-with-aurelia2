@@ -7,6 +7,6 @@ import Aurelia, { DI } from "aurelia";
         { path: ':mvcController/:mvcAction/:id?', component: import('./mvc-route') }
     ]
 })
-export class App {
+export class AppEntry {
     message: string = 'Hello World!';
 }

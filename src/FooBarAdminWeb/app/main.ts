@@ -1,8 +1,8 @@
 ﻿import Aurelia, { RouterConfiguration } from 'aurelia';
-import { App } from './app';
+import { AppEntry } from './app-entry';
 
 window['AureliaRoot'] = Aurelia
    .register(RouterConfiguration.customize({ useUrlFragmentHash: true }))
-    .app(App);
+    .app(AppEntry);
 
 window['AureliaRoot'].start();
