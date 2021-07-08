@@ -9,7 +9,7 @@ var del = require('del');
 var sassBundle = require('./gulp/sass-bundle');
 exports['sass-bundle'] = sassBundle.sassBundle;
 
-var scriptBundle = require('./gulp/script-bundle');
+var scriptBundle = require('./../FooBarFrontend/gulp/script-bundle');
 exports['script-bundle'] = scriptBundle.scriptBundle;
 
 var watcher = require('./gulp/watcher');

@@ -1,3 +1,7 @@
 {
-  "extends": "../FooBarFrontend/tsconfig"
+  "extends": "../FooBarFrontend/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "app",
+    "paths": { "SHARED/*": [ "../../FooBarFrontend/common/*" ] }
+  }
 }
