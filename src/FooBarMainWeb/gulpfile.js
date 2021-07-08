@@ -23,7 +23,7 @@ function InitAndWatch(cb) {
 exports['_init-and-watch'] = InitAndWatch;
 
 function Clean() {
-    return del(['wwwroot/dist/**/*.*', '!wwwroot/dist/**/*.txt']);
+    return del(['wwwroot/dist-local/**/*.*', '!wwwroot/dist-local/**/*.txt']);
 }
 exports['clean'] = Clean;
 

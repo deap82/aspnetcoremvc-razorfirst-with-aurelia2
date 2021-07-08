@@ -6,17 +6,18 @@ const del = require('del');
 const typescript = require('gulp-typescript');
 const replace = require('gulp-replace');
 
+var isCI = false; //TODO: Parallell tasks where this is true, for production ready version
+var dist = isCI ? 'dist' : 'dist-local';
+
 const dr = dumber({
     src: 'app',
-    baseURL: '/dist',
+    baseUrl: `/${dist}`,
     codeSplit: function (moduleId, packageName) {
         if (!packageName) {
             return 'app-bundle';
         }
     }
 });
-
-var isCI = false;
 
 function ScriptBundlePrepair(cb) {
     del(['app/common']).then(function () {
@@ -42,7 +43,7 @@ function ScriptBundle() {
 
     return merge2(buildJs(), buildHtml())
         .pipe(dr())
-        .pipe(gulp.dest('wwwroot/dist', { sourcemaps: isCI ? false : '.' }));
+        .pipe(gulp.dest(`wwwroot/${dist}`, { sourcemaps: isCI ? false : '.' }));
 }
 
 exports.scriptBundle = (cb) => gulp.series(ScriptBundlePrepair, ScriptBundle)(cb);;

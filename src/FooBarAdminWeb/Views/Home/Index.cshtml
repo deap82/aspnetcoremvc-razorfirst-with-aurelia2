@@ -1,4 +1,8 @@
-﻿@{ Layout = null; }
+﻿@inject IWebHostEnvironment hostingEnv
+
+@{ Layout = null; }
+
+@{ string dist = hostingEnv.IsRunningLocally() ? "dist-local" : "dist"; }
 
 <!DOCTYPE html>
 <html>
@@ -17,12 +21,12 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
     </environment>
 
-    <link href="/dist/site.css" rel="stylesheet" asp-append-version="true" />
+    <link href="/@dist/site.css" rel="stylesheet" asp-append-version="true" />
 </head>
 
 <body>
     <app-entry></app-entry>
-    <script src="/dist/entry-bundle.js" data-main="main" asp-append-version="true"></script>
+    <script src="/@dist/entry-bundle.js" data-main="main" asp-append-version="true"></script>
 
     <environment names="Development">
         <script src="~/lib/jquery/jquery.js"></script>

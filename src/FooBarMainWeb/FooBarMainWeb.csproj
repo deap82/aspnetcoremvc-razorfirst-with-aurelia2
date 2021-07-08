@@ -14,4 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FooBarFrontend\FooBarFrontend.csproj" />
   </ItemGroup>
+  <PropertyGroup>
+    <DefaultItemExcludes>app/common/**;wwwroot/dist-local/**;$(DefaultItemExcludes)</DefaultItemExcludes>
+  </PropertyGroup>
 </Project>
