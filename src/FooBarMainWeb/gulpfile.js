@@ -6,13 +6,13 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 var gulp = require('gulp');
 var del = require('del');
 
-var sassBundle = require('./gulp/tasks/sass-bundle');
+var sassBundle = require('./gulp/sass-bundle');
 exports['sass-bundle'] = sassBundle.sassBundle;
 
-var scriptBundle = require('./gulp/tasks/script-bundle');
+var scriptBundle = require('./gulp/script-bundle');
 exports['script-bundle'] = (cb) => gulp.series(scriptBundle.scriptBundlePrepair, scriptBundle.scriptBundle)(cb);
 
-var watcher = require('./gulp/tasks/watcher');
+var watcher = require('./gulp/watcher');
 exports['watcher'] = watcher.watcher;
 
 function InitAndWatch(cb) {
