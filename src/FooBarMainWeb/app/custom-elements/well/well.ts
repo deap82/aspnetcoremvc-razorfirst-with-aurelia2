@@ -1,4 +1,4 @@
-﻿import { bindable, customElement } from 'aurelia';
+﻿import { bindable, customElement, EventAggregator } from 'aurelia';
 import template from './well.html';
 
 /** Example of custom element only existing in one app. */
@@ -8,7 +8,13 @@ export class Well {
 
     @bindable text: string;
 
+    constructor(private ea: EventAggregator) {
+
+    }
+
     attached() {
         console.log('well attached', this);
+
+        this.ea.publish('baz');
     }
 }

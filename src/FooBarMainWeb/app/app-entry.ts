@@ -1,5 +1,5 @@
 import { route } from "@aurelia/router";
-import Aurelia, { DI } from "aurelia";
+import Aurelia, { DI, EventAggregator } from "aurelia";
 import { MvcRoute } from 'SHARED/routing/mvc-route';
 
 @route({
@@ -9,5 +9,12 @@ import { MvcRoute } from 'SHARED/routing/mvc-route';
     ]
 })
 export class AppEntry {
+    constructor(private ea: EventAggregator) {
+        ea.subscribe('baz', () => {
+            console.log('something said baz', new Date());
+        });
+    }
+
+
     message: string = 'Hello World!';
 }

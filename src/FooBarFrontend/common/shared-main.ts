@@ -1,4 +1,4 @@
-﻿import Aurelia, { RouterConfiguration } from 'aurelia';
+﻿import Aurelia, { RouterConfiguration, Registration, EventAggregator } from 'aurelia';
 import { HtmlPlaceholder } from 'SHARED/html-placeholder';
 
 let allRegistrations: any[];
@@ -11,6 +11,9 @@ export function configure(appEntry: any, ...registrations: any[]) {
         registrations = [];
 
     registrations.push(HtmlPlaceholder);
+
+    let globalEventAggregator = au.container.get(EventAggregator);
+    registrations.push(Registration.instance(EventAggregator, globalEventAggregator));
 
     allRegistrations = registrations;
 
