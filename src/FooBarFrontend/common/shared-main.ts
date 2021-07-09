@@ -4,7 +4,7 @@ import { HtmlPlaceholder } from 'SHARED/html-placeholder';
 let allRegistrations: any[];
 
 export function configure(appEntry: any, ...registrations: any[]) {
-    window['AureliaRoot'] = Aurelia
+    let au = Aurelia
         .register(RouterConfiguration.customize({ useUrlFragmentHash: true }))
 
     if (!registrations)
@@ -14,9 +14,11 @@ export function configure(appEntry: any, ...registrations: any[]) {
 
     allRegistrations = registrations;
 
-    register(window['AureliaRoot']);
+    register(au);
 
-    window['AureliaRoot'].app(appEntry).start();
+    au.app(appEntry).start();
+
+    window['AureliaRoot'] = au;
 }
 
 export function register(au: Aurelia) {
