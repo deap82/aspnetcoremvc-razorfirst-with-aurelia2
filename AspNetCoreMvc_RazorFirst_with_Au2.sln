@@ -12,9 +12,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{527C8DBA-9E9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FooBarAdminWeb", "src\FooBarAdminWeb\FooBarAdminWeb.csproj", "{4B3B833E-09F6-412D-B723-52635081683E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FooBarFrontend", "src\FooBarFrontend\FooBarFrontend.csproj", "{47FDF0A3-06EE-4A26-B4BB-B9B034A407CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FooBarFrontend", "src\FooBarFrontend\FooBarFrontend.csproj", "{47FDF0A3-06EE-4A26-B4BB-B9B034A407CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FooBarMainWeb", "src\FooBarMainWeb\FooBarMainWeb.csproj", "{92F5BA34-58FE-4D83-9C2D-BB6DFC6F2AA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vscode", "vscode", "{C6D290FF-798A-4047-97DC-9328CB6D2138}"
+	ProjectSection(SolutionItems) = preProject
+		.vscode\settings.json = .vscode\settings.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
