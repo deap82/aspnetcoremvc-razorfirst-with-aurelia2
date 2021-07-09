@@ -7,4 +7,8 @@ export class Well {
     public static readonly HtmlName: string = "fbau-well";
 
     @bindable text: string;
+
+    attached() {
+        console.log('well attached', this);
+    }
 }

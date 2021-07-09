@@ -1,10 +1,5 @@
-﻿import Aurelia, { RouterConfiguration } from 'aurelia';
+﻿import * as mainCustomElements from 'custom-elements';
+import * as sharedMain from 'SHARED/shared-main';
 import { AppEntry } from './app-entry';
-import * as mainCustomElements from 'custom-elements';
 
-window['AureliaRoot'] = Aurelia
-    .register(RouterConfiguration.customize({ useUrlFragmentHash: true }))
-    .register(<any>mainCustomElements)
-    .app(AppEntry);
-
-window['AureliaRoot'].start();
+sharedMain.configure(AppEntry, <any>mainCustomElements);

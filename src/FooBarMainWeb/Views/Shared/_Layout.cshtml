@@ -1,1 +1,13 @@
-﻿@RenderBody()
+﻿@{
+    var id = StringHelpers.RandomString(8);
+}
+
+<div id="@id">
+    @RenderBody()
+</div>
+
+<script>
+    requirejs(['common/core/html-loaded'], function (htmlLoadedModule) {
+        htmlLoadedModule.htmlLoaded($('#@id'), true);
+    });
+</script>
