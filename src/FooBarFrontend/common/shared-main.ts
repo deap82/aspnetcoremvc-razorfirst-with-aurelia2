@@ -1,5 +1,5 @@
 ﻿import Aurelia, { RouterConfiguration, Registration, EventAggregator } from 'aurelia';
-import { HtmlPlaceholder } from 'SHARED/html-placeholder';
+import { HtmlPlaceholder } from 'common/html-placeholder';
 
 let allRegistrations: any[];
 

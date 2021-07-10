@@ -1,6 +1,6 @@
 ﻿import { Aurelia, Registration } from 'aurelia';
-import { StringHelpers } from 'SHARED/utils/string-helpers';
-import * as sharedMain from 'SHARED/shared-main';
+import { StringHelpers } from 'common/utils/string-helpers';
+import * as sharedMain from 'common/shared-main';
 
 let AuEnhancedConstants = {
     viewModelDataKey: 'enhancedViewModel',

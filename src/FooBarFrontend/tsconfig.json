@@ -18,7 +18,6 @@
     "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
-    "paths": { "SHARED/*": [ "common/*" ] },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "types": [

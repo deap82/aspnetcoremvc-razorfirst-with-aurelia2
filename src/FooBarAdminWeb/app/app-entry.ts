@@ -1,6 +1,6 @@
 import { route } from "@aurelia/router";
 import Aurelia, { DI } from "aurelia";
-import { MvcRoute } from 'SHARED/routing/mvc-route';
+import { MvcRoute } from 'common/routing/mvc-route';
 
 @route({
     routes: [
