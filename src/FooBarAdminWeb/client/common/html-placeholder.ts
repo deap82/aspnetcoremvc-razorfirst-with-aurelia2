@@ -25,6 +25,8 @@ export class HtmlPlaceholder {
             return;
         }
 
+        console.log('foo');
+
         this.performAppend();
     }
 

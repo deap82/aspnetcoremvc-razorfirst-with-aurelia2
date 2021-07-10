@@ -16,4 +16,5 @@ function SassBundle() {
 		.pipe(autoprefixer({ overrideBrowserslist: ['> 0%'], cascade: false, grid: false }))
 		.pipe(gulp.dest(`./wwwroot/${dist}/`));
 }
+
 exports.sassBundle = SassBundle;

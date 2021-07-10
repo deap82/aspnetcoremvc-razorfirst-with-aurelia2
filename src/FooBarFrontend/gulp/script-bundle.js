@@ -46,4 +46,4 @@ function ScriptBundle() {
         .pipe(gulp.dest(`wwwroot/${dist}`, { sourcemaps: isCI ? false : '.' }));
 }
 
-exports.scriptBundle = (cb) => gulp.series(ScriptBundlePrepair, ScriptBundle)(cb);;
+exports.scriptBundle = (cb) => gulp.series(ScriptBundlePrepair, ScriptBundle)(cb);
