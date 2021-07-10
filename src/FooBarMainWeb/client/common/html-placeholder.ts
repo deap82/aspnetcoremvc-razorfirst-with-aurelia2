@@ -1,4 +1,4 @@
-﻿import { customElement, bindable } from 'aurelia';
+import { customElement, bindable } from 'aurelia';
 import template from './html-placeholder.html';
 
 /** The purpose of this custom element is to have a reusable element that can display server side rendered

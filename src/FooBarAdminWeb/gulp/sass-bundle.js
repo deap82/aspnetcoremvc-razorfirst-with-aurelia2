@@ -10,7 +10,7 @@ var dist = isCI ? 'dist' : 'dist-local';
 function SassBundle() {
 	del(`wwwroot/${dist}/site.css`);
 	return gulp
-		.src('app/**/*.scss')
+		.src('client/**/*.scss')
 		.pipe(sass(/*{ includePaths: ['node_modules/material-components-web', 'node_modules']}*/).on('error', sass.logError))
 		.pipe(concatCss('site.css'))
 		.pipe(autoprefixer({ overrideBrowserslist: ['> 0%'], cascade: false, grid: false }))

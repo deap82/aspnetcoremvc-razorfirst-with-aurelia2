@@ -1,7 +1,7 @@
 {
   "extends": "../FooBarFrontend/tsconfig",
   "compilerOptions": {
-    "baseUrl": "app",
+    "baseUrl": "client",
     "paths": { "common/*": [ "../../FooBarFrontend/common/*" ] }
   }
 }

@@ -9,19 +9,19 @@ var isCI = false; //TODO: Parallell tasks where this is true, for production rea
 var dist = isCI ? 'dist' : 'dist-local';
 
 const dr = dumber({
-    src: 'app',
+    src: 'client',
     baseUrl: `/${dist}`,
     codeSplit: function (moduleId, packageName) {
         if (!packageName) {
-            return 'app-bundle';
+            return 'client-bundle';
         }
     }
 });
 
 function ScriptBundlePrepair(cb) {
-    del(['app/common']).then(function () {
+    del(['client/common']).then(function () {
         gulp.src(['./../FooBarFrontend/common/**/*.ts', './../FooBarFrontend/common/**/*.html'])
-            .pipe(gulp.dest('app/common'))
+            .pipe(gulp.dest('client/common'))
             .on('end', cb);
     })
 }
@@ -30,14 +30,14 @@ function ScriptBundle() {
     var buildJs = () => {
         const ts = typescript.createProject('tsconfig.json', { noEmitOnError: true, paths: { 'common/*': [ 'common/*' ] } });
 
-        var globs = ['app/**/*.ts'];
+        var globs = ['client/**/*.ts'];
         return gulp.src(globs, { sourcemaps: !isCI })
             .pipe(au2())
             .pipe(ts());
     }
 
     var buildHtml = () => {
-        return gulp.src('app/**/*.html')
+        return gulp.src('client/**/*.html')
             .pipe(au2());
     }
 

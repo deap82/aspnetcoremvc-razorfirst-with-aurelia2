@@ -2,8 +2,8 @@
 
 function Watcher(cb) {
     gulp.parallel('script-bundle', 'sass-bundle')(() => {
-        gulp.watch(['app/**/*.ts', 'app/**/*.html'], gulp.series('script-bundle'));
-        gulp.watch(['app/**/*.scss'], gulp.series('sass-bundle'));
+        gulp.watch(['../FooBarFrontend/common/**/*.ts', '../FooBarFrontend/common/**/*.ts', 'client/**/*.ts', 'client/**/*.html', '!client/common/**/*.*'], gulp.series('script-bundle'));
+        gulp.watch(['client/**/*.scss'], gulp.series('sass-bundle'));
         cb();
     });
 }
