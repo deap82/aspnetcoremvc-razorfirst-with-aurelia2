@@ -1,0 +1,1 @@
+﻿/// <reference path="../../FooBarFrontend/common/declare.d.ts" />
