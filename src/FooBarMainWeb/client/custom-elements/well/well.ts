@@ -13,8 +13,6 @@ export class Well {
     }
 
     attached() {
-        console.log('well attached', this);
-
         this.ea.publish('baz');
     }
 }

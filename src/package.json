@@ -19,6 +19,7 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "aurelia": "latest"
+    "aurelia": "latest",
+    "linkifyjs": "^2.1.9"
   }
 }

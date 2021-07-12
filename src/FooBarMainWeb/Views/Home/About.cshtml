@@ -1,4 +1,9 @@
-﻿<h2>About.</h2>
-<h3>@ViewData["Message"]</h3>
+﻿<div fbth-aurelia-enhance="true">
+    <h2>About.</h2>
+    <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+    <fbau-well text="This is a well with a link to cnn.com"></fbau-well>
+
+    <p>Use this area to provide additional information.</p>
+    <p innerhtml.bind="'If you want news, check out cnn.com!' | linkify"></p>
+</div>

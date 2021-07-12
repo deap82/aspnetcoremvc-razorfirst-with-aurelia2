@@ -1,5 +1,6 @@
 ﻿import Aurelia, { RouterConfiguration, Registration, EventAggregator } from 'aurelia';
 import { HtmlPlaceholder } from 'common/html-placeholder';
+import * as globalValueConverters from 'common/value-converters';
 
 let allRegistrations: any[];
 
@@ -11,6 +12,8 @@ export function configure(appEntry: any, ...registrations: any[]) {
         registrations = [];
 
     registrations.push(HtmlPlaceholder);
+
+    registrations.push(globalValueConverters);
 
     let globalEventAggregator = au.container.get(EventAggregator);
     registrations.push(Registration.instance(EventAggregator, globalEventAggregator));
