@@ -1,4 +1,5 @@
-﻿import Aurelia, { RouterConfiguration, Registration, EventAggregator } from 'aurelia';
+﻿import 'common/core/startup';
+import Aurelia, { RouterConfiguration, Registration, EventAggregator } from 'aurelia';
 import { HtmlPlaceholder } from 'common/html-placeholder';
 import * as globalValueConverters from 'common/value-converters';
 
