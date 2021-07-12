@@ -17,8 +17,6 @@ namespace FooBarMainWeb
         {
             ConfigureServices_Stage1(services);
 
-            services.AddMvc();
-
             ConfigureServices_Stage2(services);
         }
 

@@ -1,7 +1,8 @@
-﻿var del = require('del');
+﻿const gulp = require('gulp');
+const del = require('del');
 
 function Clean() {
-    return del(['wwwroot/dist-local/**/*.*']);
+    return del(['wwwroot/dist-local/**/*.*', 'client/common/**/*.*']);
 }
 
-exports.clean = Clean;
+exports.clean = (cb) => gulp.series('common-cshtml-clean', Clean)(cb);

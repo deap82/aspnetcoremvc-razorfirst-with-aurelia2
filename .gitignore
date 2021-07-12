@@ -353,3 +353,13 @@ MigrationBackup/
 src/*Web/wwwroot/dist/
 src/*Web/wwwroot/dist-local/
 src/*Web/client/common/
+src/*Web/Views/_Common*
+src/*Web/Areas/*/Views/_View*.cshtml
+
+src/FooBarFrontend/Areas/*/Views/_View*.cshtml
+
+src/FooBarAdminWeb/Views/_View*.cshtml
+src/FooBarMainWeb/Views/_View*.cshtml
+
+src/FooBarAdminWeb/Areas/*/Views/_Common*
+src/FooBarMainWeb/Areas/*/Views/_Common*
