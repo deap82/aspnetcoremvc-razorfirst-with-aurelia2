@@ -26,6 +26,8 @@
 
 <body>
     <app-entry></app-entry>
+
+    @*script-bundle gulp task removes hash from entry-bundle.js since we can easily use asp-append-version here to cache bust it.*@
     <script src="/@dist/entry-bundle.js" data-main="main" asp-append-version="true"></script>
 
     <environment names="Development">
