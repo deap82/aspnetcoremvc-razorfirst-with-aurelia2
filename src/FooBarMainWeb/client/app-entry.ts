@@ -1,20 +1,31 @@
-import { route } from "@aurelia/router";
-import Aurelia, { DI, EventAggregator } from "aurelia";
-import { MvcRoute } from 'common/routing/mvc-route';
+import { EventAggregator, Route, IRouter } from "aurelia";
+import { MvcRouteNavigationRouteConfig } from 'common/routing/mvc-route-navigation/mvc-route-contracts';
 
-@route({
-    routes: [
-        { path: '', /*redirectTo: '',*/ component: MvcRoute }, //RedirectTo not working, handled in mvc-route component for now...
-        { path: ':mvcController/:mvcAction/:id?', component: MvcRoute }
-    ]
-})
 export class AppEntry {
-    constructor(private ea: EventAggregator) {
+
+    constructor(private ea: EventAggregator, @IRouter private router: IRouter) {
+
+        Route.configure(
+            {
+                routes:
+                    [
+                        new MvcRouteNavigationRouteConfig()
+                    ]
+            },
+            AppEntry
+        );
+
+        
+
         ea.subscribe('baz', () => {
             console.log('something said baz', new Date());
         });
+
     }
 
-
-    message: string = 'Hello World!';
+    attached() {
+        if (!location.hash) {
+            this.router.load('Home/Start');
+        }
+    }
 }

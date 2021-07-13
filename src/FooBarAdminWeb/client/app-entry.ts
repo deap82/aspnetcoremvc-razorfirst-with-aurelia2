@@ -1,13 +1,25 @@
-import { route } from "@aurelia/router";
-import Aurelia, { DI } from "aurelia";
-import { MvcRoute } from 'common/routing/mvc-route';
+import { Route, IRouter } from "aurelia";
+import { MvcRouteNavigationRouteConfig } from 'common/routing/mvc-route-navigation/mvc-route-contracts';
 
-@route({
-    routes: [
-        { path: '', /*redirectTo: '',*/ component: MvcRoute }, //RedirectTo not working, handled in mvc-route component for now...
-        { path: ':mvcController/:mvcAction/:id?', component: MvcRoute }
-    ]
-})
 export class AppEntry {
-    message: string = 'Hello World!';
+
+    constructor(@IRouter private router: IRouter) {
+
+        Route.configure(
+            {
+                routes:
+                    [
+                        new MvcRouteNavigationRouteConfig()
+                    ]
+            },
+            AppEntry
+        );
+
+    }
+
+    attached() {
+        if (!location.hash) {
+            this.router.load('Home/Start');
+        }
+    }
 }

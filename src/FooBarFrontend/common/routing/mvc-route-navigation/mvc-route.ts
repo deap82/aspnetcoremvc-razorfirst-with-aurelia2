@@ -16,11 +16,7 @@ export class MvcRoute {
     }
 
     private resolveMvcUrl(params: any, current: RouteNode): string {
-        let url = `/${params.mvcController || 'Home'}/${params.mvcAction || 'Start'}${(params.id ? '/' + params.id : '')}`;
-
-        if (!url) {
-            url = '/Home/Start'; //TODO: Handle start page route
-        }
+        let url = `/${params.mvcController}/${params.mvcAction}${(params.id ? '/' + params.id : '')}`;
 
         var queryString = current.queryParams?.toString();
         if (queryString) {
