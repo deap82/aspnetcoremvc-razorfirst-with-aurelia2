@@ -1,6 +1,9 @@
-﻿<div fbth-aurelia-enhance="true">
+﻿@model FooBarMainWeb.Models.Home.AboutModel
+
+<div fbth-aurelia-enhance-module="views/home/home-about" fbth-aurelia-enhance-data="Model">
     <h2>About.</h2>
-    <h3>@ViewData["Message"]</h3>
+    <h3 textcontent.bind="data.topic"></h3>
+    <input type="text" value.bind="data.topic" />
 
     <fbau-well text="This is a well with a link to cnn.com"></fbau-well>
 

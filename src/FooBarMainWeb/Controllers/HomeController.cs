@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FooBarMainWeb.Models.Home;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FooBarMainWeb.Controllers
 {
@@ -16,9 +17,12 @@ namespace FooBarMainWeb.Controllers
 
 		public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            var model = new AboutModel
+            {
+                Topic = "History"
+            };
 
-            return View();
+            return View(model);
         }
 
         public IActionResult Contact()

@@ -146,7 +146,7 @@ function createViewModel(au: Aurelia, metaData: AureliaEnhanceMetaData, data: an
     //aurelia.use.singleton(metaData.clientModelType);
     au.register(Registration.singleton(metaData.clientModelType, metaData.clientModelType));
 
-    let viewModel = au.container.get(metaData.clientModelType);
+    let viewModel = au.container.get(metaData.clientModelType); //constructor of home-about.ts (and other MVC-view models) is called here
     return viewModel;
 }
 
