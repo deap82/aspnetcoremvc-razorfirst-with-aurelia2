@@ -1,9 +1,9 @@
-import { EventAggregator, Route, IRouter } from "aurelia";
+import { EventAggregator, Route } from "aurelia";
 import { MvcRouteNavigationRouteConfig } from 'common/routing/mvc-route-navigation/mvc-route-contracts';
 
 export class AppEntry {
 
-    constructor(private ea: EventAggregator, @IRouter private router: IRouter) {
+    constructor(ea: EventAggregator) {
 
         Route.configure(
             {
