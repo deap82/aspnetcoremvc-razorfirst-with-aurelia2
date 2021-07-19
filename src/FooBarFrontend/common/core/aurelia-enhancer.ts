@@ -2,6 +2,12 @@
 import { StringHelpers } from 'common/utils/string-helpers';
 import * as sharedMain from 'common/shared-main';
 
+let aurelia: Aurelia;
+
+export function init(au: Aurelia): void {
+    aurelia = au;
+}
+
 let AuEnhancedConstants = {
     viewModelDataKey: 'enhancedViewModel',
     globalDataKey: 'enhancedGlobal',
@@ -35,17 +41,15 @@ export function enhanceServerHtml(elementId: string, modulePath?: string, data?:
     function performEnhance() {
         performEnhanceCalled = true;
 
-        let au = new Aurelia();
-
         function finalize(clientModel: any) {
             
             if (clientModel.data && injectableAs) {
                 //aurelia.container.unregister(injectableAs);
                 //aurelia.use.instance(injectableAs, clientModel.data);
-                au.register(Registration.instance(injectableAs, clientModel.data));
+                aurelia.register(Registration.instance(injectableAs, clientModel.data));
             }
 
-            enhance(au, clientModel, element, /*partial*/ false);
+            enhance(aurelia, clientModel, element, /*partial*/ false);
             assignGlobal(clientModel);
         }
 
@@ -55,7 +59,7 @@ export function enhanceServerHtml(elementId: string, modulePath?: string, data?:
 
                 if (module && module.createMetaData && typeof (module.createMetaData) === 'function') {
                     var diMetaData = module.createMetaData();
-                    clientModel = createViewModel(au, diMetaData, data);
+                    clientModel = createViewModel(aurelia, diMetaData, data);
                 }
                 finalize(clientModel);
             });
@@ -72,7 +76,7 @@ export function enhanceServerHtml(elementId: string, modulePath?: string, data?:
             if (injectionDictionary) {
                 Object.keys(injectionDictionary).forEach((key: string) => {
                     let injectionKey = injectionDictionary[key];
-                    let instance = au.container.get(injectionKey);
+                    let instance = aurelia.container.get(injectionKey);
                     if (instance && instance !== injectionKey) {
                         clientModel[key] = instance;
                     } else {
@@ -100,12 +104,10 @@ export function enhanceServerHtml(elementId: string, modulePath?: string, data?:
     })();
 }
 
-export function enhance(au: Aurelia, viewModel: any, element: HTMLElement, partial: boolean = true): void {
+export function enhance(aurelia: Aurelia, viewModel: any, element: HTMLElement, partial: boolean = true): void {
     if (!partial) {
         $(element).data(AuEnhancedConstants.viewModelDataKey, viewModel).attr(AuEnhancedConstants.dataAttribute, 'true');
     }
-
-    sharedMain.register(au);
 
     let finalize = () => {
         //if (!partial) {
@@ -124,7 +126,12 @@ export function enhance(au: Aurelia, viewModel: any, element: HTMLElement, parti
         $(document).trigger('vk-aurelia-enhanced', <AureliaEnhancedEventArgs>{ isPartial: partial, element: element });
     }
 
-    let startPromise = <Promise<void>>au.enhance({ host: element, component: viewModel }).start();
+    let startPromise = <Promise<void>>aurelia.enhance({
+        host: element,
+        component: viewModel,
+        //@ts-ignore
+        container: aurelia.container
+    }).start();
     if (startPromise) {
         startPromise.then(() => {
             finalize();
@@ -135,18 +142,18 @@ export function enhance(au: Aurelia, viewModel: any, element: HTMLElement, parti
 }
 
 
-function createViewModel(au: Aurelia, metaData: AureliaEnhanceMetaData, data: any): any {
+function createViewModel(aurelia: Aurelia, metaData: AureliaEnhanceMetaData, data: any): any {
     if (data) {
         //aurelia.container.unregister(metaData.clientModelType); //Ensure new instance each time we have new data, so that constructor is called with new data
         //aurelia.container.unregister(metaData.dataTypeName);
         //aurelia.use.instance(metaData.dataTypeName, data);
-        au.register(Registration.instance(metaData.dataTypeName, data));
+        aurelia.register(Registration.instance(metaData.dataTypeName, data));
     }
 
     //aurelia.use.singleton(metaData.clientModelType);
-    au.register(Registration.singleton(metaData.clientModelType, metaData.clientModelType));
+    aurelia.register(Registration.singleton(metaData.clientModelType, metaData.clientModelType));
 
-    let viewModel = au.container.get(metaData.clientModelType); //constructor of home-about.ts (and other MVC-view models) is called here
+    let viewModel = aurelia.container.get(metaData.clientModelType); //constructor of home-about.ts (and other MVC-view models) is called here
     return viewModel;
 }
 
