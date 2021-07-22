@@ -126,19 +126,10 @@ export function enhance(aurelia: Aurelia, viewModel: any, element: HTMLElement, 
         $(document).trigger('vk-aurelia-enhanced', <AureliaEnhancedEventArgs>{ isPartial: partial, element: element });
     }
 
-    let startPromise = <Promise<void>>aurelia.enhance({
+    aurelia.enhance({
         host: element,
-        component: viewModel,
-        //@ts-ignore
-        container: aurelia.container
-    }).start();
-    if (startPromise) {
-        startPromise.then(() => {
-            finalize();
-        });
-    } else {
-        finalize();
-    }
+        component: viewModel
+    });
 }
 
 

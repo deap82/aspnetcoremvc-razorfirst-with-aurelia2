@@ -15,8 +15,6 @@ export class AppEntry {
             AppEntry
         );
 
-        
-
         ea.subscribe('baz', () => {
             console.log('something said baz', new Date());
         });
@@ -24,8 +22,6 @@ export class AppEntry {
     }
 
     attached() {
-        if (!location.hash) {
-            this.router.load('Home/Start');
-        }
+
     }
 }
