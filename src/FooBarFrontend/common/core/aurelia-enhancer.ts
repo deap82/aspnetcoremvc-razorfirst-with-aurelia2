@@ -1,4 +1,4 @@
-﻿import { Aurelia, Registration } from 'aurelia';
+﻿import { Aurelia, IEnhancementConfig, Registration } from 'aurelia';
 import { StringHelpers } from 'common/utils/string-helpers';
 import * as sharedMain from 'common/shared-main';
 
@@ -124,14 +124,8 @@ export function enhance(au: Aurelia, viewModel: any, element: HTMLElement, parti
         $(document).trigger('vk-aurelia-enhanced', <AureliaEnhancedEventArgs>{ isPartial: partial, element: element });
     }
 
-    let startPromise = <Promise<void>>au.enhance({ host: element, component: viewModel }).start();
-    if (startPromise) {
-        startPromise.then(() => {
-            finalize();
-        });
-    } else {
-        finalize();
-    }
+    au.enhance({ host: element, component: viewModel });
+    finalize();
 }
 
 

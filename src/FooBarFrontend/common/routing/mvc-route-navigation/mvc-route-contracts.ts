@@ -1,7 +1,7 @@
-﻿import { IRouteConfig } from '@aurelia/router';
+﻿import { IRouteViewModel } from 'aurelia';
 import { MvcRoute } from './mvc-route';
 
-export class MvcRouteNavigationRouteConfig implements IRouteConfig {
+export class MvcRouteNavigationRouteConfig implements IRouteViewModel {
     public readonly id: string = 'MvcRoute';
     public readonly path: string = ':mvcController/:mvcAction/:id?/:detailSection?';
     public component = MvcRoute;
