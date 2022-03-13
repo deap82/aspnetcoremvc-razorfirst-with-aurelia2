@@ -1,25 +1,22 @@
-import { Route, IRouter } from "aurelia";
+import { Route } from "aurelia";
+import { MvcRoute } from 'common/routing/mvc-route-navigation/mvc-route';
 import { MvcRouteNavigationRouteConfig } from 'common/routing/mvc-route-navigation/mvc-route-contracts';
 
 export class AppEntry {
 
-    constructor(@IRouter private router: IRouter) {
-
+    constructor() {
         Route.configure(
             {
                 routes:
                     [
-                        new MvcRouteNavigationRouteConfig()
+                        //{ path: '', redirectTo: 'Home/Start' },
+                        //{ path: 'Home/Start', component: MvcRoute },
+                        { path: '', component: MvcRoute.WithDefaults('Home', 'Start') },
+                        new MvcRouteNavigationRouteConfig(),
                     ]
             },
             AppEntry
         );
-
     }
 
-    attached() {
-        if (!location.hash) {
-            this.router.load('Home/Start');
-        }
-    }
 }
