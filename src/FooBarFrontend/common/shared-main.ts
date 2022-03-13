@@ -16,20 +16,13 @@ export function configure(appEntry: any, ...registrations: any[]) {
 
     registrations.push(globalValueConverters);
 
-    let globalEventAggregator = au.container.get(EventAggregator);
-    registrations.push(Registration.instance(EventAggregator, globalEventAggregator));
-
     allRegistrations = registrations;
 
-    register(au);
+    for (var i = 0; i < allRegistrations.length; i++) {
+        au.register(<any>allRegistrations[i]);
+    }
 
     au.app(appEntry).start();
 
     window['AureliaRoot'] = au;
-}
-
-export function register(au: Aurelia) {
-    for (var i = 0; i < allRegistrations.length; i++) {
-        au.register(<any>allRegistrations[i]);
-    }
 }

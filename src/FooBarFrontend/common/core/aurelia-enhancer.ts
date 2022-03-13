@@ -35,7 +35,7 @@ export function enhanceServerHtml(elementId: string, modulePath?: string, data?:
     function performEnhance() {
         performEnhanceCalled = true;
 
-        let au = new Aurelia();
+        let au = <Aurelia>window['AureliaRoot'];
 
         function finalize(clientModel: any) {
             
@@ -104,8 +104,6 @@ export function enhance(au: Aurelia, viewModel: any, element: HTMLElement, parti
     if (!partial) {
         $(element).data(AuEnhancedConstants.viewModelDataKey, viewModel).attr(AuEnhancedConstants.dataAttribute, 'true');
     }
-
-    sharedMain.register(au);
 
     let finalize = () => {
         //if (!partial) {
